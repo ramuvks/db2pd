@@ -176,7 +176,7 @@ class Database:
         :param conditionColumn:
         :return:
         """
-        sql = "DELETE FROM {} WHERE {} NOT IN ( SELECT DISCONNECT {} FROM {})".format(tableName, conditionColumn,
+        sql = "DELETE FROM {} WHERE {} NOT IN ( SELECT distinct {} FROM {})".format(tableName, conditionColumn,
                                                                                       conditionColumn, tableName)
         try:
             self.curr.execute(str(sql))
